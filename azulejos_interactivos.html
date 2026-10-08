@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>azulejos interactivos</title>
+    <link rel="stylesheet" href="azulejos_interactivos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="azulejos_interactivos.js" defer></script>
+</head>
+<body>
+    <!------------------------------------------>
+    <!--|estructuracion_azulejos_interactivos|-->
+    <!------------------------------------------>
+    <main class="app">
+        <!-- Encabezado con el título y la explicación -->
+        <header>
+            <h1>Azulejos Interactivos</h1>
+            <p class="subtitulo">Haz clic en un azulejo para cambiarlo al siguiente color.</p>
+        </header>
+        <!-- Controles: tamaño del tablero y paleta de colores.
+        Lo que elijas aquí se guarda y se recuerda al refrescar la página. -->
+        <section class="controles">
+            <div class="campo">
+                <label for="campo-lado">Tamaño del tablero</label>
+                <!-- Cantidad de azulejos por lado (3 × 3, 4 × 4, etc.) -->
+                <select id="campo-lado">
+                    <option value="3">3 × 3</option>
+                    <option value="4">4 × 4</option>
+                    <option value="5">5 × 5</option>
+                    <option value="6">6 × 6</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="campo-paleta">Paleta de colores</label>
+                <!-- Cada paleta tiene 5 colores que se repiten en ciclo.
+                Los colores de cada paleta están definidos en script.js. -->
+                <select id="campo-paleta">
+                    <option value="mediterraneo">Mediterráneo</option>
+                    <option value="atardecer">Atardecer</option>
+                    <option value="bosque">Bosque</option>
+                </select>
+            </div>
+        </section>
+        <!-- Tablero: marco con la leyenda de colores y los azulejos.
+        Los azulejos son botones, así también se pueden usar con el teclado. -->
+        <section class="marco">
+            <!-- La leyenda muestra el orden en que cambian los colores -->
+            <p class="leyenda-titulo">Orden de los colores en cada clic:</p>
+            <div id="leyenda" class="leyenda"></div>
+            <!-- Aquí JavaScript crea los azulejos (un botón por cada uno).
+            La cantidad de columnas depende del tamaño elegido. -->
+            <div id="tablero" class="tablero"></div>
+        </section>
+        <!-- Estadísticas: se guardan en localStorage.
+        Cada tarjeta tiene una etiqueta pequeña y un número que escribe JavaScript. -->
+        <section class="estadisticas">
+            <div><small>Clics totales</small><strong id="s-clics"></strong></div>
+            <div><small>Azulejos con color</small><strong id="s-color"></strong></div>
+        </section>
+        <!-- Botones de acción.
+        Ambos cambian el tablero y guardan el resultado. -->
+        <div class="acciones">
+            <!-- Pinta cada azulejo con un color al azar -->
+            <button id="btn-azar" class="boton">Colores al azar</button>
+            <!-- Deja todos los azulejos en blanco y pone el contador en cero -->
+            <button id="btn-reiniciar" class="boton secundario">Reiniciar</button>
+        </div>
+        <!-- Ayuda rápida: explica cómo se usa el tablero.
+        Es un bloque aparte (aside) porque es información complementaria. -->
+        <aside class="ayuda">
+            <h2>Cómo usarlo</h2>
+            <ul>
+                <li>Cada clic avanza un color; al llegar al último vuelve al primero.</li>
+                <li>Con el teclado, usa Tab para llegar a un azulejo y Enter para cambiarlo.</li>
+                <li>Al cambiar el tamaño, el tablero empieza de nuevo.</li>
+            </ul>
+        </aside>
+    </main>
+    <!-- Aviso por si el navegador tiene JavaScript desactivado -->
+    <noscript>Activa JavaScript para usar los azulejos.</noscript>
+</body>
+</html>
